@@ -98,7 +98,7 @@ public class StringProblems{
     // fizzString("fig") → "Fizz"
     // fizzString("dib") → "Buzz"
     // fizzString("fib") → "FizzBuzz"
-    public String testfizzString(String s1){
+    public String fizzString(String s1){
         Boolean firstIsF = s1.charAt(0) == 'f';
         Boolean lastIsB = s1.charAt(s1.length() - 1) == 'b';
         if (firstIsF && lastIsB) {
@@ -122,7 +122,7 @@ public class StringProblems{
     // fizzString2(1) → "1!"
     // fizzString2(2) → "2!"
     // fizzString2(3) → "Fizz!"
-    public String testfizzString2(int x){
+    public String fizzString2(int x){
         Boolean divBy3 = x % 3==0;
         Boolean divBy5 = x % 5 == 0;
         if (divBy3 && divBy5) {
