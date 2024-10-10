@@ -10,8 +10,11 @@ public class StringProblems{
     // endsLy("y") → false
     // endsLy("oddy") → false
     public boolean endsLy(String x){
-            //implement code here        
-        return x.substring(x.length() - 2) == "ly";
+            //implement code here      
+        if (x.length() < 2) {
+            return false;
+        }  
+        return x.substring(x.length() - 2).equals("ly");
     }
 
 
@@ -22,11 +25,14 @@ public class StringProblems{
     // conCat("dog", "cat") → "dogcat"
     // conCat("abc", "") → "abc"
     public String conCat(String s1, String s2){
-        if (s1.substring(s1.length() - 1) == s2.substring(0, 1)) {
+        if (s1 == "" || s2 == "") {
+            return s1 + s2;
+        }
+        if (s1.substring(s1.length() - 1).equals(s2.substring(0, 1))) {
             return s1 + s2.substring(1);
         }
         //implement code here
-        return "";
+        return s1 + s2;
     }
 
     // Given a string, return a version without the first 2 chars. 
@@ -67,15 +73,21 @@ public class StringProblems{
     // withoutX("Hxix") → "Hxi"
     public String withoutX(String s1){
         String newStr = "";
+        // if the first character is x
         if (s1.charAt(0) == 'x') {
-            newStr += s1.substring(1, s1.length()-1);
+            // Don't add it!
         } else {
             newStr += s1.charAt(0);
         }
-        if (s1.substring(s1.length()-1) != "x") {
-            newStr += s1.substring(s1.length()-1);
+        // add the inbetween part of the string
+        newStr += s1.substring(1, s1.length()-1);
+        // if the last character is x
+        if (s1.substring(s1.length()-1).equals("x")) {
+            // Do nothing
+        } else {
+            // if it's not x, add everything else
+            newStr += s1.substring(s1.length() - 1);
         }
-        System.out.println(s1.substring(s1.length()-1) + " == x");
         return newStr;
     }
 
@@ -88,7 +100,7 @@ public class StringProblems{
     // fizzString("fib") → "FizzBuzz"
     public String testfizzString(String s1){
         Boolean firstIsF = s1.charAt(0) == 'f';
-        Boolean lastIsB = s1.charAt(s1.length()) == 'b';
+        Boolean lastIsB = s1.charAt(s1.length() - 1) == 'b';
         if (firstIsF && lastIsB) {
             return "FizzBuzz";
         }
@@ -114,13 +126,13 @@ public class StringProblems{
         Boolean divBy3 = x % 3==0;
         Boolean divBy5 = x % 5 == 0;
         if (divBy3 && divBy5) {
-            return "FizzBuzz";
+            return "FizzBuzz!";
         }
         if (divBy3) {
             return "Fizz!";
         }
         if (divBy5) {
-            return "Buzz";
+            return "Buzz!";
         }
         return String.valueOf(x) + "!";
     }
